@@ -1,0 +1,9 @@
+{
+  "name": "egg-mongoose",
+  "version": "1.0.0",
+  "description": "mongoose plugin",
+  "author": "syb",
+  "eggPlugin": {
+    "name": "mongoose"
+  }
+}
