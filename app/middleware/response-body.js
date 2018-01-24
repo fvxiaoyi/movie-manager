@@ -8,13 +8,16 @@ module.exports = async (ctx, next) => {
       success: true,
       msg: '操作成功',
     };
-    if (resp.total) {
-      ctx.body.total = resp.total;
-      ctx.body.data = resp.data;
-    } else {
-      ctx.body.data = resp;
+    if (resp) {
+      if (resp.total !== undefined) {
+        ctx.body.total = resp.total;
+        ctx.body.data = resp.data;
+      } else {
+        ctx.body.data = resp;
+      }
     }
   } catch (e) {
+    console.error(e);
     ctx.body = {
       success: false,
       msg: e.message,

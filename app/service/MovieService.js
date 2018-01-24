@@ -73,6 +73,33 @@ class MovieService extends Service {
     return null;
   }
 
+  async update(param) {
+    assert(param.id, 'id 不能为空');
+    // TODO 图片少了,对应的要删除
+    await this.ctx.model.Movie.findOneAndUpdate({ _id: param.id }, param);
+    return { id: param.id };
+  }
+
+  async create(data) {
+    assert(data.name && data.name.length > 0, '名称不能为空');
+    const movie = new this.ctx.model.Movie(data);
+    await movie.save(err => {
+      if (err) {
+        throw err;
+      }
+    });
+    return { id: movie._id };
+  }
+
+  async remove(_id) {
+    assert(_id, 'id 不能为空');
+    await this.ctx.model.Movie.remove({ _id }, err => {
+      if (err) {
+        throw err;
+      }
+    });
+  }
+
 }
 
 module.exports = MovieService;

@@ -9,5 +9,13 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.post('/movie/list', responseBody, controller.movieController.list);
   router.post('/movie/get', responseBody, controller.movieController.get);
+  router.post('/movie/update', responseBody, controller.movieController.update);
+  router.post('/movie/create', responseBody, controller.movieController.create);
+  router.post('/movie/remove', responseBody, controller.movieController.remove);
+
   router.post('/type/findAll', responseBody, controller.movieTypeController.findAll);
+
+  router.get('/store/gain/:id', controller.storeController.gain);
+  router.post('/store/upload', responseBody, controller.storeController.upload);
+  
 };
